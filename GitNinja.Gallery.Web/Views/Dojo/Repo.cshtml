@@ -1,6 +1,5 @@
-﻿@{
-    ViewBag.Title = "Repo";
+﻿@model GitNinja.Gallery.Web.Models.Repo
+@{
+    ViewBag.Title = Model.Name;
 }
-
-<h2>Repo</h2>
-<p>display repo</p>
+<h2>@Html.ActionLink(Model.Dojo, "Dojo", new { dojo = Model.Dojo }) / @Model.Name</h2>

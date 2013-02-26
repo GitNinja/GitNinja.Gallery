@@ -1,6 +1,14 @@
-﻿@{
-    ViewBag.Title = "Dojo";
+﻿@model GitNinja.Gallery.Web.Models.Dojo
+@{
+    ViewBag.Title = Model.Name;
 }
-
-<h2>Dojo</h2>
-<p>display dojo, list repos</p>
+<h2>@Model.Name</h2>
+@if (Model.Any())
+{
+<ul>
+@foreach (var item in Model)
+{
+    <li>@Html.ActionLink(item.Name, "Repo", new { dojo = item.Dojo, repo = item.Name })</li>
+}
+</ul>
+}
