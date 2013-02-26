@@ -17,12 +17,6 @@ namespace GitNinja.Gallery.Web.Controllers
         return View(new Dojo(dojo));
       }
 
-      public ActionResult Test(string dojo)
-      {
-        //display dojo, list repos
-        return View(new Dojo(dojo));
-      }
-
       public ActionResult Repo(string dojo, string repo)
       {
         //display repo

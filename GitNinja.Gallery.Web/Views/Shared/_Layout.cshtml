@@ -11,10 +11,13 @@
     <body>
         <header>
             <div class="content-wrapper">
-                <div class="float-left">
+                <a href="@Url.Action("Index", "Home")"><img id="site-title-logo" src="@Url.Content("~/Images/gitninja50x50.png")" alt="GitNinja logo (Octocat in a ninja mask)" class="float-left"/></a>
+                <div id="site-title-wrapper" class="float-left">
                     <p class="site-title">
-                        <a href="@Url.Content("~/")"><img src="@Url.Content("~/Images/gitninja50x50.png")" alt="GitNinja logo (Octocat in a ninja mask)" /></a>
-                        @Html.ActionLink("git ninja", "Index", "Home")
+                        @Html.ActionLink("GitNinja.com", "Index", "Home")
+                    </p>
+                    <p class="site-subtitle">
+                        Enterprise Git hosting on Windows <img src="@Url.Content("~/Images/microsoft-windows-logo-20x18.png")" alt="Microsoft Windows logo" />
                     </p>
                 </div>
                 <div class="float-right">
@@ -40,7 +43,7 @@
         <footer>
             <div class="content-wrapper">
                 <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+                    <p>&copy; @DateTime.Now.Year - GitNinja.com</p>
                 </div>
             </div>
         </footer>

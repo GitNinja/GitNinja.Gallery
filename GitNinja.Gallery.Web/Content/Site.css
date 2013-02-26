@@ -128,10 +128,24 @@ footer {
 
 /* site title
 ----------------------------------------------------------*/
+#site-title-wrapper {
+    padding-bottom: 20px;
+}
+#site-title-logo {
+    margin-left: 6px;
+    margin-right: 10px;
+    border: 0;
+}
 .site-title {
     color: #c8c8c8;
     font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
     font-size: 2.3em;
+    margin: 0;
+}
+.site-subtitle {
+    color: #c8c8c8;
+    font-family: Rockwell, Consolas, "Courier New", Courier, monospace;
+    font-size: 1.4em;
     margin: 0;
 }
 
