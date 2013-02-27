@@ -22,7 +22,7 @@
                 </div>
                 <div class="float-right">
                     <section id="login">
-                        Hello, <span class="username">@User.Identity.Name</span>!
+                        Hello, <span class="username">@((User != null) ? User.Identity.Name : "anonymous user")</span>!
                     </section>
                     <nav>
                         <ul id="menu">
