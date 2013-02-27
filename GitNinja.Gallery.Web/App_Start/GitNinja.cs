@@ -15,9 +15,17 @@ namespace GitNinja.Gallery.Web
 
     public static GitNinja Instance { get { return instance; } }
 
-
-    //todo: check if this is as efficient as it should be.
-    public static string GitNinjaHome { get { return ConfigurationManager.AppSettings.Get("GitNinjaHome"); } }
+    public static string GitNinjaHome
+    {
+      get
+      {
+        var gitNinjaHome = ConfigurationManager.AppSettings.Get("GitNinjaHome");
+        if (string.IsNullOrWhiteSpace(gitNinjaHome))
+          gitNinjaHome = Path.Combine(AppDomain.CurrentDomain.GetData("DataDirectory").ToString(), "Repositories");
+        return gitNinjaHome;
+      }
+    }
+    
 
     public static void Init()
     {
