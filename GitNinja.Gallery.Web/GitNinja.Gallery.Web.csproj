@@ -221,6 +221,7 @@
     <Content Include="Global.asax" />
     <Content Include="Images\gitninja.jpg" />
     <Content Include="Images\gitninja50x50.png" />
+    <Content Include="Images\gitninja88x70.png" />
     <Content Include="Images\microsoft-windows-logo-20x18.png" />
     <Content Include="Scripts\jquery-1.7.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
