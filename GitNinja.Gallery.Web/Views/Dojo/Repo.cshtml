@@ -1,10 +1,27 @@
 ﻿@using GitNinja.Gallery.Web
+@using GitNinja.Gallery.Web.App_Start
 @model global::GitNinja.Gallery.Web.Models.Repo
 @{
     ViewBag.Title = Model.Name;
 }
-<h2>@Html.ActionLink(Model.Dojo, "Dojo", new { dojo = Model.Dojo }) / @Model.Name</h2>
+<h2>@Html.ActionLink(Model.Dojo, "Dojo", new { dojo = Model.Dojo }) / @Html.ActionLink(Model.Name, "Repo", new { dojo = Model.Dojo, repo = Model.Name })</h2>
 <p>
     Repository:
     @Html.TextBox("GitRepositoryUrl", string.Format("{0}://{1}{2}/{3}{4}/{5}", Request.Url.Port != 443 ? "http" : "https", Request.Url.Host, (Request.Url.Port != 80 && Request.Url.Port != 443) ? ":" + Request.Url.Port : null, RouteConfig.GitRepositoryPrefix, Model.Dojo, Model.Name))
 </p>
+<ul class="git-commit-list">
+@foreach (var commit in Model.Repository.Commits)
+{//todo: limit commit list to last n entries.
+    <li>
+        @Html.Raw(Html.Gravatar(commit.Author.Email, 40, htmlAttributes: new { @class = "gravatar" }))
+        <div class="commit-details">
+            @Html.ActionLink(commit.Message, "Detail", "Commit", new { id = commit.Id }, new { @class = "commit-message" })<br />
+            @Html.ActionLink(commit.Author.Name, "Detail", "Author", new { id = commit.Author.Email.ToMd5Hash() }, new { @class = "commit-author" })
+        </div>
+        <div class="commit-links">
+            @Html.ActionLink(commit.Id.ToString(12), "Detail", "Commit", new { id = commit.Id }, new { @class = "button" })<br />
+            @Html.ActionLink("Browse code", "Detail", "Commit", new { id = commit.Id }, null)
+        </div>
+    </li>
+}
+</ul>

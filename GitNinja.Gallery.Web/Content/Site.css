@@ -19,17 +19,19 @@ a {
     outline: none;
     padding-left: 3px;
     padding-right: 3px;
+    text-decoration: none;
+}
+a:hover {
     text-decoration: underline;
 }
 
-    a:link, a:visited,
-    a:active, a:hover {
-        color: #333;
-    }
+a:link, a:visited, a:active, a:hover {
+    color: #333;
+}
 
-    a:hover {
-        background-color: #c7d1d6;
-    }
+a:hover {
+    /*background-color: #c7d1d6;*/
+}
 
 header, footer, hgroup,
 nav, section {
@@ -767,4 +769,90 @@ tr.pager td {
         footer p {
             margin: 0;
         }
+}
+
+
+/*GitNinja customisations************************************************************/
+
+ul.git-commit-list{
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+ul.git-commit-list:last-child {
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom: 1px solid #e2eaee;
+}
+ul.git-commit-list li{
+    display: list-item;
+    width: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 8px;
+    border-top: 1px solid #e2eaee;
+}
+ul.git-commit-list li:after {
+    content: ".";
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+ul.git-commit-list li img.gravatar{
+    float: left;
+    margin: 2px 4px 2px 0;
+    border-radius: 5px;
+}
+ul.git-commit-list li div.commit-links {
+    float: right;
+    width: 120px;
+    white-space: nowrap;
+    text-align: right;
+    margin-right: 10px;
+}
+ul.git-commit-list li div.commit-details {
+    float: left;
+    width: 750px;
+}
+a.commit-message {
+    font-weight: bold;
+}
+
+.button {
+    padding: 0 7px;
+    color: #4e575b;
+    text-shadow: 0 1px rgba(255,255,255,0.5);
+    background-color: #ddecf3;
+    background-image: -moz-linear-gradient(#eff6f9, #ddecf3);
+    background-image: -webkit-linear-gradient(#eff6f9, #ddecf3);
+    background-image: linear-gradient(#eff6f9, #ddecf3);
+    background-repeat: repeat-x;
+    border: 1px solid #cedee5;
+    border-radius: 3px;
+}
+.button:hover {
+    text-decoration: none;
+    border-color: #cedee5;
+    background-color: #eaf4f8;
+    background-image: -moz-linear-gradient(#fbfdfe, #eaf4f8);
+    background-image: -webkit-linear-gradient(#fbfdfe, #eaf4f8);
+    background-image: linear-gradient(#fbfdfe, #eaf4f8);
+    background-repeat: repeat-x;
+}
+
+input[type="text"], input[type="password"], input[type="email"], textarea {
+    outline: none;
+    color: #333;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-position: right center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.075);
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    transition: all 0.15s ease-in;
+    -webkit-transition: all 0.15s ease-in 0;
+    vertical-align: middle;
 }
