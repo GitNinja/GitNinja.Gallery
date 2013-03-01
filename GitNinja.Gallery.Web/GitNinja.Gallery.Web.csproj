@@ -129,6 +129,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="Tamir.SharpSSH">
+      <HintPath>..\packages\Tamir.SharpSSH.1.1.1.13\lib\Tamir.SharpSSH.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
@@ -136,6 +139,9 @@
     <Reference Include="Antlr3.Runtime">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Winterdom.IO.FileMap">
+      <HintPath>..\packages\Winterdom.IO.FileMap.2.0.2.0\lib\Winterdom.IO.FileMap.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -275,6 +281,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\lib\GitSharp.Core\GitSharp.Core.csproj">
+      <Project>{C46EDD61-C202-465A-93F1-ADE20A83BB59}</Project>
+      <Name>GitSharp.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\lib\GitSharp\GitSharp.csproj">
+      <Project>{7311850F-619A-4241-B09F-157792C75FBA}</Project>
+      <Name>GitSharp</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

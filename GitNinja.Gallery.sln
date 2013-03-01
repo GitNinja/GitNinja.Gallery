@@ -10,19 +10,44 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7E804D
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitSharp", "lib\GitSharp\GitSharp.csproj", "{7311850F-619A-4241-B09F-157792C75FBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitSharp.Core", "lib\GitSharp.Core\GitSharp.Core.csproj", "{C46EDD61-C202-465A-93F1-ADE20A83BB59}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{10A48AB4-77FC-4333-9FD4-FEE289C798A9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Update|Any CPU = Update|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{E91C9AE0-85CD-470E-B70E-0B288F394F00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E91C9AE0-85CD-470E-B70E-0B288F394F00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E91C9AE0-85CD-470E-B70E-0B288F394F00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E91C9AE0-85CD-470E-B70E-0B288F394F00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E91C9AE0-85CD-470E-B70E-0B288F394F00}.Update|Any CPU.ActiveCfg = Release|Any CPU
+		{E91C9AE0-85CD-470E-B70E-0B288F394F00}.Update|Any CPU.Build.0 = Release|Any CPU
+		{7311850F-619A-4241-B09F-157792C75FBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7311850F-619A-4241-B09F-157792C75FBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7311850F-619A-4241-B09F-157792C75FBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7311850F-619A-4241-B09F-157792C75FBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7311850F-619A-4241-B09F-157792C75FBA}.Update|Any CPU.ActiveCfg = Update|Any CPU
+		{7311850F-619A-4241-B09F-157792C75FBA}.Update|Any CPU.Build.0 = Update|Any CPU
+		{C46EDD61-C202-465A-93F1-ADE20A83BB59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C46EDD61-C202-465A-93F1-ADE20A83BB59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C46EDD61-C202-465A-93F1-ADE20A83BB59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C46EDD61-C202-465A-93F1-ADE20A83BB59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C46EDD61-C202-465A-93F1-ADE20A83BB59}.Update|Any CPU.ActiveCfg = Update|Any CPU
+		{C46EDD61-C202-465A-93F1-ADE20A83BB59}.Update|Any CPU.Build.0 = Update|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C46EDD61-C202-465A-93F1-ADE20A83BB59} = {10A48AB4-77FC-4333-9FD4-FEE289C798A9}
+		{7311850F-619A-4241-B09F-157792C75FBA} = {10A48AB4-77FC-4333-9FD4-FEE289C798A9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPath = packages\Unity.2.1.505.2\lib\NET35

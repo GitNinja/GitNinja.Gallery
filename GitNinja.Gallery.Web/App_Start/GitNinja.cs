@@ -15,6 +15,16 @@ namespace GitNinja.Gallery.Web
 
     public static GitNinja Instance { get { return instance; } }
 
+    public static bool IsValidRepository(string dojoName, string repoName)
+    {
+      return Instance.RepoExists(dojoName, repoName);
+    }
+
+    public static string GetRepositoryPath(string dojoName, string repoName)
+    {
+      return Path.Combine(GitNinjaHome, dojoName, repoName);
+    }
+
     public static string GitNinjaHome
     {
       get
@@ -64,7 +74,7 @@ namespace GitNinja.Gallery.Web
     {
       if (!RepoExists(dojoName, repoName))
       {
-        var repoPath = Path.Combine(GitNinjaHome, dojoName, repoName);
+        var repoPath = GetRepositoryPath(dojoName, repoName);
         CreateDirectory(repoPath);
         Repository.Init(repoPath, true);
       }

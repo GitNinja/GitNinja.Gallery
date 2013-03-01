@@ -13,13 +13,15 @@ namespace GitNinja.Gallery.Web.Controllers
 
       public ActionResult Dojo(string dojo)
       {
-        //display dojo, list repos
+        if (!GitNinja.Instance.DojoExists(dojo))
+          return new HttpNotFoundResult();
         return View(new Dojo(dojo));
       }
 
       public ActionResult Repo(string dojo, string repo)
       {
-        //display repo
+        if (!GitNinja.Instance.RepoExists(dojo, repo))
+          return new HttpNotFoundResult();
         return View(new Repo(dojo, repo));
       }
 
