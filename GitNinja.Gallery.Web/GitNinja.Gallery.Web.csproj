@@ -164,13 +164,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\packages\LibGit2Sharp.0.9.5\NativeBinaries\amd64\git2.dll">
+    <Content Include="..\packages\LibGit2Sharp.0.9.5\NativeBinaries\x86\git2.dll">
       <Link>git2.dll</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\packages\LibGit2Sharp.0.9.5\NativeBinaries\amd64\git2.pdb">
+    <Content Include="..\packages\LibGit2Sharp.0.9.5\NativeBinaries\x86\git2.pdb">
       <Link>git2.pdb</Link>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
