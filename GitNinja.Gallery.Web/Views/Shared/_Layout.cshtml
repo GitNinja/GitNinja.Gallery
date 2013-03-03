@@ -11,10 +11,10 @@
     <body>
         <header>
             <div class="content-wrapper">
-                <a href="@Url.Action("Index", "Home")"><img id="site-title-logo" src="@Url.Content("~/Images/gitninja88x70.png")" alt="GitNinja logo (GitNinja with drawn sword)" class="float-left"/></a>
+                <a href="@Url.Action("Index", "Dojo")"><img id="site-title-logo" src="@Url.Content("~/Images/gitninja88x70.png")" alt="GitNinja logo (GitNinja with drawn sword)" class="float-left"/></a>
                 <div id="site-title-wrapper" class="float-left">
                     <p class="site-title">
-                        @Html.ActionLink("GitNinja.com", "Index", "Home")
+                        @Html.ActionLink("GitNinja.com", "Index", "Dojo")
                     </p>
                     <p class="site-subtitle">
                         Enterprise Git hosting on Windows <img src="@Url.Content("~/Images/microsoft-windows-logo-20x18.png")" alt="Microsoft Windows logo" />
@@ -26,9 +26,8 @@
                     </section>
                     <nav>
                         <ul id="menu">
-                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Dojo List", "Index", "Dojo")</li>
                             <li>@Html.ActionLink("About", "About", "Home")</li>
-                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         </ul>
                     </nav>
                 </div>
