@@ -8,7 +8,7 @@ namespace GitNinja.Gallery.Web.Controllers
       public ActionResult Index()
       {
         //list all dojos
-        return View();
+        return View(GitNinja.Instance.GetDojoList());
       }
 
       public ActionResult Dojo(string dojo)

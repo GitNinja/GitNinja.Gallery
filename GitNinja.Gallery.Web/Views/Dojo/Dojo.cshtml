@@ -12,3 +12,9 @@
 }
 </ul>
 }
+@using (Html.BeginForm("Create", "Dojo", FormMethod.Get))
+{
+    @Html.TextBox("repo")<br />
+    @Html.Hidden("dojo", Model.Name)
+    <input type="submit" value="Create Repo" />
+}

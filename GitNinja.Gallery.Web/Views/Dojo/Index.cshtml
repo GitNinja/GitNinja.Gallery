@@ -1,5 +1,18 @@
-﻿@{
-    ViewBag.Title = "Index";
+﻿@model IEnumerable<string>
+@{
+    ViewBag.Title = "Dojo (Project) List";
 }
-
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
+@if (Model.Any())
+{
+<ul>
+@foreach (var dojo in Model)
+{
+    <li>@Html.ActionLink(dojo, "Dojo", new { dojo })</li>
+}
+</ul>
+}
+@using(Html.BeginForm("Create", "Dojo", FormMethod.Get)){
+    @Html.TextBox("dojo")<br />
+    <input type="submit" value="Create Dojo" />
+}
