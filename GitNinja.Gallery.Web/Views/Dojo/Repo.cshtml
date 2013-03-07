@@ -15,7 +15,7 @@
 <h2>@Html.ActionLink(Model.Dojo, "Dojo", new { dojo = Model.Dojo }) / @Html.ActionLink(Model.Name, "Repo", new { dojo = Model.Dojo, repo = Model.Name })</h2>
 <p>
     Repository:
-    @Html.TextBox("GitRepositoryUrl", string.Format("{0}://{1}{2}/{3}{4}/{5}", Request.Url.Port != 443 ? "http" : "https", Request.Url.Host, (Request.Url.Port != 80 && Request.Url.Port != 443) ? ":" + Request.Url.Port : null, RouteConfig.GitRepositoryPrefix, Model.Dojo, Model.Name))
+    @Html.TextBox("GitRepositoryUrl", Model.Url)
 </p>
 <ul class="git-commit-list">
     @foreach (var commit in commits) {

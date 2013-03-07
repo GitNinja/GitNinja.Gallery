@@ -7,9 +7,6 @@ namespace GitNinja.Gallery.Web
 {
   public class RouteConfig
   {
-    public const string GitRepositoryPrefix = "git/";
-    public const string AnonymousGitRepositoryPrefix = "git/anon/";
-
     public static void RegisterRoutes(RouteCollection routes)
     {
       routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
