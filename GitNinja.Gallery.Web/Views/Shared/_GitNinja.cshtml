@@ -1,0 +1,93 @@
+﻿@using GitNinja.Gallery.Web.App_Start
+@{
+    var user = GitNinja.Gallery.Web.Models.User.Current;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - GitNinja</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Styles.Render("~/Content/less")
+    @Styles.Render("~/Content/gn")
+    @RenderSection("head", required: false)
+</head>
+<body>
+    <div class="wrap">
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="brand" href="#">GitNinja</a>
+                    <div class="nav-collapse collapse">
+                        <ul class="nav">
+                            <li class="active"><a href="#">Dashboard</a></li>
+                            <li><a href="#projects">Projects</a></li>
+                            <li><a href="#prefs">Preferences</a></li>
+                        </ul>
+                        <ul class="nav pull-right">
+                            <li><a href="#" class="nav-notifications visible-desktop" data-placement="bottom" data-toggle="popover" data-original-title="Notifications"><span class="badge badge-notification">8</span></a></li>
+                            <li class="divider-vertical"></li>
+
+                            <li>
+                                <a href="#" class="user-nav">
+                                    @if (User != null && !string.IsNullOrWhiteSpace(User.Identity.Name))
+                                    {
+                                        @Html.Raw(Html.Gravatar(user.Email, 24, htmlAttributes: new { @class = "user-icon img-rounded" }))
+                                        <span class="username">&nbsp;@user.DisplayName</span>
+                                    }
+                                    else
+                                    {
+                                        <span>login</span>
+                                    }
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <header class="jumbotron subhead">
+            <div class="container">
+                @RenderSection("topbar", required: false)
+            </div>
+        </header>
+        <div class="container">
+            <div class="row">
+                <div class="span8">
+                    @RenderBody()
+                </div>
+                <div class="span4">
+                    <div class="well well-nav">
+                        @RenderSection("right", required: false)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/gitninja")
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <p>
+                Enterprise Git Hosting for Windows powered by <strong>GitNinja</strong> 1.0 (build <span class="text-success">af938sh2c</span>)
+            </p>
+            <ul class="footer-links">
+                <li><a href="">Changelog</a></li>
+                <li class="muted">-</li>
+                <li><a href="#">Issue Tracker</a></li>
+                <li class="muted">-</li>
+                <li><a href="">Contact Us</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+</html>

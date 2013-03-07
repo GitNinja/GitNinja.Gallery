@@ -1,18 +1,25 @@
 ﻿@model IEnumerable<string>
 @{
-    ViewBag.Title = "Dojo (Project) List";
+    ViewBag.Title = "Dashboard";
 }
-<h2>@ViewBag.Title</h2>
-@if (Model.Any())
-{
-<ul>
-@foreach (var dojo in Model)
-{
-    <li>@Html.ActionLink(dojo, "Dojo", new { dojo })</li>
-}
+<ul class="breadcrumb">
+    <li>@Html.ActionLink("Dashboard", "Index", "Dojo")</li>
 </ul>
-}
-@using(Html.BeginForm("Create", "Dojo", FormMethod.Get)){
-    @Html.TextBox("dojo")<br />
-    <input type="submit" value="Create Dojo" />
+@section right{
+    <ul class="nav nav-list">
+        <li class="nav-header">Your Dojos</li>
+        @if (Model.Any()) {
+        foreach (var dojo in Model) {
+        <li>@Html.ActionLink(dojo, "Dojo", new { dojo })</li>
+        }}
+        <li class="divider"></li>
+    </ul>
+    @using (Html.BeginForm("Create", "Dojo", FormMethod.Get, new { @class = "form-search" }))
+    {
+        <span class="nav-header">Add new dojo</span>
+        <div class="well-small">
+            @Html.TextBox("dojo", null, new { placeholder = "dojo name", @class = "pull-left" })
+            <input type="submit" value="Go" class="btn btn-primary pull-right" />
+        </div>
+    }
 }

@@ -12,23 +12,28 @@
 @section head{
     @Styles.Render("~/Content/paging")
 }
-<h2>@Html.ActionLink(Model.Dojo, "Dojo", new { dojo = Model.Dojo }) / @Html.ActionLink(Model.Name, "Repo", new { dojo = Model.Dojo, repo = Model.Name })</h2>
+<ul class="breadcrumb">
+    <li>@Html.ActionLink("Dashboard", "Index", "Dojo")<span class="divider">/</span></li>
+    <li>@Html.ActionLink(Model.Dojo, "Dojo", new { dojo = Model.Dojo })<span class="divider">/</span></li>
+    <li>@Html.ActionLink(Model.Name, "Repo", new { dojo = Model.Dojo, repo = Model.Name })</li>
+</ul>
 <p>
     Repository:
     @Html.TextBox("GitRepositoryUrl", Model.Url)
 </p>
-<ul class="git-commit-list">
+<ul class="nav nav-stacked">
     @foreach (var commit in commits) {
-        <li>
-            @Html.Raw(Html.Gravatar(commit.Author.Email, 40, htmlAttributes: new { @class = "gravatar" }))
-            <div class="commit-details">
-                @Html.ActionLink(commit.Message, "Detail", "Commit", new { id = commit.Id }, new { @class = "commit-message" })<br />
+        <li class="well well-small" style="margin-bottom: 3px; font-size: smaller;">
+            @Html.Raw(Html.Gravatar(commit.Author.Email, 40, htmlAttributes: new { @class = "gravatar pull-left img-rounded", style = "margin-right: 10px;" }))
+            <div class="commit-details pull-left">
+                @Html.ActionLink(commit.MessageShort, "Detail", "Commit", new { id = commit.Id }, new { @class = "commit-message", style = "" })<br />
                 @Html.ActionLink(commit.Author.Name, "Detail", "Author", new { id = commit.Author.Email.ToMd5Hash() }, new { @class = "commit-author" })
             </div>
-            <div class="commit-links">
-                @Html.ActionLink(commit.Id.ToString(12), "Detail", "Commit", new { id = commit.Id }, new { @class = "button" })<br />
-                @Html.ActionLink("Browse code", "Detail", "Commit", new { id = commit.Id }, null)
+            <div class="commit-links pull-right">
+                @Html.ActionLink(commit.Id.ToString(12), "Detail", "Commit", new { id = commit.Id }, new { @class = "label pull-right" })<br />
+                @Html.ActionLink("Browse code", "Detail", "Commit", new { id = commit.Id }, new { @class = "label label-info pull-right" })
             </div>
+            <div class="clearfix"></div>
         </li>
     }
 </ul>
