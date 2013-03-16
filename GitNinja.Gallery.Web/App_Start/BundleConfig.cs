@@ -29,28 +29,10 @@ namespace GitNinja.Gallery.Web
       bundles.Add(new ScriptBundle("~/bundles/gitninja").Include(
                   "~/Scripts/gitninja.js"));
 
-      bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/site.css"));
-
-      bundles.Add(new StyleBundle("~/Content/gn").Include("~/Content/gitninja.css"));
-      bundles.Add(new StyleBundle("~/Content/less").Include(
-          "~/Content/bootstrap.css",
-          "~/Content/bootstrap-responsive.css"));
-
-      bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
-                  "~/Content/themes/base/jquery.ui.core.css",
-                  "~/Content/themes/base/jquery.ui.resizable.css",
-                  "~/Content/themes/base/jquery.ui.selectable.css",
-                  "~/Content/themes/base/jquery.ui.accordion.css",
-                  "~/Content/themes/base/jquery.ui.autocomplete.css",
-                  "~/Content/themes/base/jquery.ui.button.css",
-                  "~/Content/themes/base/jquery.ui.dialog.css",
-                  "~/Content/themes/base/jquery.ui.slider.css",
-                  "~/Content/themes/base/jquery.ui.tabs.css",
-                  "~/Content/themes/base/jquery.ui.datepicker.css",
-                  "~/Content/themes/base/jquery.ui.progressbar.css",
-                  "~/Content/themes/base/jquery.ui.theme.css"));
-
-      bundles.Add(new StyleBundle("~/Content/paging").Include("~/Content/PagedList.css"));
+      bundles.Add(new StyleBundle("~/Content/gn").Include("~/Content/css/gitninja.css"));
+      bundles.Add(new StyleBundle("~/Content/bs").Include(
+          "~/Content/css/bootstrap.css",
+          "~/Content/css/bootstrap-responsive.css"));
     }
   }
 }

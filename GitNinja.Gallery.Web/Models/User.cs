@@ -20,7 +20,7 @@ namespace GitNinja.Gallery.Web.Models
 
         public string DisplayName { get { return string.Format("{0} {1}", Forename, Surname); } }
 
-        public static User Current { get { return Ldap.GetUser(HttpContext.Current.User.Identity.Name); } }
+        public static User Current { get { return /*Ldap.GetUser(HttpContext.Current.User.Identity.Name)*/ new User(){Id = "R883970", Email = "tom.joedecke@googlemail.com", Forename = "Tom", Surname = "Jödecke"}; } }
     }
 
     public class Group : List<User>
