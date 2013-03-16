@@ -9,6 +9,10 @@
     var pageNumber = int.Parse(Request["page"] ?? "1");
     var commits = Model.Repository.Commits.ToPagedList(pageNumber, pageSize);
 }
+@section topbar
+{
+    <h3>@Model.Dojo <span>/</span> @Model.Name</h3>
+}
 @section head{
     @Styles.Render("~/Content/paging")
 }
