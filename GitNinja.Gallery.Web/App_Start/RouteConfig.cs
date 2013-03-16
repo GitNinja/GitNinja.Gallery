@@ -11,6 +11,7 @@ namespace GitNinja.Gallery.Web
     {
       routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+      /* Browse ****************************************************************************/
       routes.MapRoute(
         name: "GotoDojo",
         url: "Browse/{dojo}",
@@ -26,6 +27,23 @@ namespace GitNinja.Gallery.Web
         url: "{controller}/{action}/{id}",
         defaults: new { controller = "Dojo", action = "Index", id = UrlParameter.Optional }
       );
+
+      /* Git ******************************************************************************/
+      routes.MapRoute(
+        name: "GitInfoRefs",
+        url: "git/{dojo}/{repo}/info/refs",
+        defaults: new { controller = "Git", action = "GetInfoRefs" },
+        constraints: new { method = new HttpMethodConstraint("GET") });
+      routes.MapRoute(
+        name: "GitUploadPack",
+        url: "git/{dojo}/{repo}/git-upload-pack",
+        defaults: new { controller = "Git", action = "UploadPack" },
+        constraints: new { method = new HttpMethodConstraint("POST") });
+      routes.MapRoute(
+        name: "GitReceivePack",
+        url: "git/{dojo}/{repo}/git-receive-pack",
+        defaults: new { controller = "Git", action = "ReceivePack" },
+        constraints: new { method = new HttpMethodConstraint("POST") });
     }
   }
 }
