@@ -11,16 +11,16 @@
 }
 @section topbar
 {
-    <h3>@Model.Dojo <span>/</span> @Model.Name</h3>
+    <h4>
+        @Html.ActionLink("Dashboard", "Index", "Dojo")<span class="divider"> /</span>
+        @Html.ActionLink(Model.Dojo, "Dojo", new { dojo = Model.Dojo })<span class="divider"> /</span>
+        @Html.ActionLink(Model.Name, "Repo", new { dojo = Model.Dojo, repo = Model.Name })
+    </h4>
 }
 @section head{
     @Styles.Render("~/Content/paging")
 }
-<ul class="breadcrumb">
-    <li>@Html.ActionLink("Dashboard", "Index", "Dojo")<span class="divider">/</span></li>
-    <li>@Html.ActionLink(Model.Dojo, "Dojo", new { dojo = Model.Dojo })<span class="divider">/</span></li>
-    <li>@Html.ActionLink(Model.Name, "Repo", new { dojo = Model.Dojo, repo = Model.Name })</li>
-</ul>
+
 <p>
     Repository:
     @Html.TextBox("GitRepositoryUrl", Model.Url)

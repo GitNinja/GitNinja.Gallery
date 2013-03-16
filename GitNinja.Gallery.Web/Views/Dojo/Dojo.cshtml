@@ -4,7 +4,10 @@
 }
 
 @section topbar{
-    <h3>Dojo - @Model.Name</h3>
+    <h4>
+        @Html.ActionLink("Dashboard", "Index", "Dojo")<span class="divider"> /</span>
+        @Html.ActionLink(Model.Name, "Dojo", new { dojo = Model.Name })
+    </h4>
 }
 
 @section right{
@@ -35,8 +38,3 @@
     }
 
 }
-
-<ul class="breadcrumb">
-    <li>@Html.ActionLink("Dashboard", "Index", "Dojo") <span class="divider">/</span></li>
-    <li>@Html.ActionLink(Model.Name, "Dojo", new { dojo = Model.Name }) <span class="divider">/</span></li>
-</ul>

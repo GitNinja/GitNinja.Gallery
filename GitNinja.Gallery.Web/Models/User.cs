@@ -19,7 +19,6 @@ namespace GitNinja.Gallery.Web.Models
 
     public string DisplayName { get { return (!string.IsNullOrWhiteSpace(Forename) && !string.IsNullOrWhiteSpace(Surname)) ? string.Format("{0} {1}", Forename, Surname) : Id; } }
 
-
     public static User Current
     {
       get
