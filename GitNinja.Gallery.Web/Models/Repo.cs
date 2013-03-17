@@ -19,6 +19,8 @@ namespace GitNinja.Gallery.Web.Models
           Dojo = dojoName;
           Name = repoName;
           Repository = new Repository(GitNinja.GetRepositoryPath(dojoName, repoName));
+          
+
           Url = string.Format("https://{0}/{1}/{2}", ConfigurationManager.AppSettings.Get("GitHost"), Dojo, Name);
       }
   }

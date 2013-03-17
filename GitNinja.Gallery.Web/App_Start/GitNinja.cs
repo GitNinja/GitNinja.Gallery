@@ -15,6 +15,12 @@ namespace GitNinja.Gallery.Web
 
     public static GitNinja Instance { get { return instance; } }
 
+
+      public static void Moo()
+      {
+          
+      }
+
     public static bool IsValidRepository(string dojoName, string repoName)
     {
       return Instance.RepoExists(dojoName, repoName);
