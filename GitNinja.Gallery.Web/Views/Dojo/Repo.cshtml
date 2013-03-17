@@ -35,8 +35,10 @@
                     if (Modernizr.history) {
                         history.pushState({ path: this.path }, '', this.href);
                     }
-                    $.get(this.href, function(data) {
+                    $('#tree-container').addClass('is-loading');
+                    $.get(this.href, function (data) {
                         $('#tree-container').html(data);
+                        $('#tree-container').removeClass('is-loading');
                         hookupTreeEvents();
                     });
 
