@@ -20,25 +20,52 @@
 @section head{
     @Styles.Render("~/Content/paging")
 }
+@section bottom {
+    <script type="text/javascript">
+        $(function() {
+            $('#repo-tab a:first').tab('show');
+        });
+    </script>    
+}
 
-<p>
-    Repository:
-    @Html.TextBox("GitRepositoryUrl", Model.Url)
-</p>
-<ul class="nav nav-stacked">
-    @foreach (var commit in commits) {
-        <li class="well well-small" style="margin-bottom: 3px; font-size: smaller;">
-            @Html.Raw(Html.Gravatar(commit.Author.Email, 40, htmlAttributes: new { @class = "gravatar pull-left img-rounded", style = "margin-right: 10px;" }))
-            <div class="commit-details pull-left">
-                @Html.ActionLink(commit.MessageShort, "Detail", "Commit", new { id = commit.Id }, new { @class = "commit-message", style = "" })<br />
-                @Html.ActionLink(commit.Author.Name, "Detail", "Author", new { id = commit.Author.Email.ToMd5Hash() }, new { @class = "commit-author" })
+<div class="row">
+    <div class="span12">
+        <div class="input-prepend">
+            <button type="button" class="btn" disabled="disabled">HTTP</button>
+            <button type="button" class="btn" disabled="disabled">SSH</button>
+            @Html.TextBox("GitRepositoryUrl", Model.Url, new { @class = "input-xxlarge input-url"})
+        </div>
+
+
+        <ul class="nav nav-tabs" id="repo-tab">
+            <li><a href="#commits" data-toggle="tab">Commits</a></li>
+            <li><a href="#files" data-toggle="tab">Files</a></li>
+            <li><a href="#pull-requests" data-toggle="tab">Pull Requests</a></li>
+            <li><a href="#settings" data-toggle="tab">Settings</a></li>
+        </ul>    
+        <div class="tab-content">
+            <div class="tab-pane active" id="commits">
+                <ul class="nav nav-stacked">
+                    @foreach (var commit in commits) {
+                        <li class="well well-small" style="margin-bottom: 3px; font-size: smaller;">
+                            @Html.Raw(Html.Gravatar(commit.Author.Email, 40, htmlAttributes: new { @class = "gravatar pull-left img-rounded", style = "margin-right: 10px;" }))
+                            <div class="commit-details pull-left">
+                                @Html.ActionLink(commit.MessageShort, "Detail", "Commit", new { id = commit.Id }, new { @class = "commit-message", style = "" })<br />
+                                @Html.ActionLink(commit.Author.Name, "Detail", "Author", new { id = commit.Author.Email.ToMd5Hash() }, new { @class = "commit-author" })
+                            </div>
+                            <div class="commit-links pull-right">
+                                @Html.ActionLink(commit.Id.ToString(12), "Detail", "Commit", new { id = commit.Id }, new { @class = "label pull-right" })<br />
+                                @Html.ActionLink("Browse code", "Detail", "Commit", new { id = commit.Id }, new { @class = "label label-info pull-right" })
+                            </div>
+                            <div class="clearfix"></div>
+                        </li>
+                    }
+                </ul>
+                @Html.PagedListPager(commits, page => Url.Action("Repo", "Dojo", new { page }))                
             </div>
-            <div class="commit-links pull-right">
-                @Html.ActionLink(commit.Id.ToString(12), "Detail", "Commit", new { id = commit.Id }, new { @class = "label pull-right" })<br />
-                @Html.ActionLink("Browse code", "Detail", "Commit", new { id = commit.Id }, new { @class = "label label-info pull-right" })
-            </div>
-            <div class="clearfix"></div>
-        </li>
-    }
-</ul>
-@Html.PagedListPager(commits, page => Url.Action("Repo", "Dojo", new { page }))
+            <div class="tab-pane" id="files">...</div>
+            <div class="tab-pane" id="pull-requests">...</div>
+            <div class="tab-pane" id="settings">...</div>
+        </div>
+    </div>
+</div>

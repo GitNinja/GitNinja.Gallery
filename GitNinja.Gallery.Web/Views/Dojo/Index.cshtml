@@ -10,28 +10,34 @@
     <h4>Dashboard</h4>
 }
 
-@section right{
-    <ul class="nav nav-list">
-        <li class="nav-header">Your Dojos</li>
-        @if (Model.Any())
-        {
-            foreach (var dojo in Model)
+<div class="row">
+    <div class="span8">
+    </div>
+    <div class="span4">
+        <div class="well well-nav">
+            <ul class="nav nav-list">
+                <li class="nav-header">Your Dojos</li>
+                @if (Model.Any())
+                {
+                    foreach (var dojo in Model)
+                    {
+                    <li>@Html.ActionLink(dojo, "Dojo", new { dojo })</li>
+                    }
+                }
+                <li class="divider"></li>
+            </ul>
+            @using (Html.BeginForm("Create", "Dojo", FormMethod.Get))
             {
-            <li>@Html.ActionLink(dojo, "Dojo", new { dojo })</li>
+                <ul class="nav nav-list">
+                    <li class="nav-header">Add new dojo</li>
+                    <li>
+                        <div class="input-append">
+                            @Html.TextBox("dojo", null, new { placeholder = "dojo name", @class = "input-block-level" })
+                            <input type="submit" value="Create" class="btn" />
+                        </div>
+                    </li>
+                </ul>
             }
-        }
-        <li class="divider"></li>
-    </ul>
-    @using (Html.BeginForm("Create", "Dojo", FormMethod.Get))
-    {
-        <ul class="nav nav-list">
-            <li class="nav-header">Add new dojo</li>
-            <li>
-                <div class="input-append">
-                    @Html.TextBox("dojo", null, new { placeholder = "dojo name", @class = "input-block-level" })
-                    <input type="submit" value="Create" class="btn" />
-                </div>
-            </li>
-        </ul>
-    }
-}
+        </div>
+    </div>
+</div>

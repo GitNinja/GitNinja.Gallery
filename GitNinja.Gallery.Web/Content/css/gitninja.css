@@ -123,3 +123,8 @@ footer.footer {
 .well-nav {
     padding:8px 0
 }
+
+input.input-url {
+   font-family: Courier, monospace;
+   font-size: 12px;
+}
