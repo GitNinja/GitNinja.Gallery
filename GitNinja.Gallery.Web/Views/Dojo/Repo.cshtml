@@ -24,6 +24,25 @@
     <script type="text/javascript">
         $(function() {
             $('#repo-tab a:first').tab('show');
+
+            $.get('@Url.RouteUrl("tree", new {dojo = Model.Dojo, repo = Model.Name, branch = "master"})', function(data) {
+                $('#tree-container').html(data);
+                hookupTreeEvents();
+            });
+
+            var hookupTreeEvents = function() {
+                $('#tree-container a').click(function() {
+                    if (Modernizr.history) {
+                        history.pushState({ path: this.path }, '', this.href);
+                    }
+                    $.get(this.href, function(data) {
+                        $('#tree-container').html(data);
+                        hookupTreeEvents();
+                    });
+
+                    return false;
+                });
+            };
         });
     </script>    
 }
@@ -63,7 +82,9 @@
                 </ul>
                 @Html.PagedListPager(commits, page => Url.Action("Repo", "Dojo", new { page }))                
             </div>
-            <div class="tab-pane" id="files">...</div>
+            <div class="tab-pane" id="files">
+                <div id="tree-container"></div>
+            </div>
             <div class="tab-pane" id="pull-requests">...</div>
             <div class="tab-pane" id="settings">...</div>
         </div>

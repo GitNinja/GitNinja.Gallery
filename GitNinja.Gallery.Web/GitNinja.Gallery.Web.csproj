@@ -146,13 +146,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\DojoController.cs" />
-    <Compile Include="Controllers\FileBrowserController.cs" />
+    <Compile Include="Controllers\TreeBrowserController.cs" />
     <Compile Include="Controllers\GitController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Ldap.cs" />
+    <Compile Include="Helpers\RepositoryExtensions.cs" />
+    <Compile Include="Helpers\TimeHelper.cs" />
     <Compile Include="Models\Dojo.cs" />
     <Compile Include="Models\Repo.cs" />
     <Compile Include="Models\User.cs" />
@@ -238,6 +240,7 @@
     <Content Include="Views\Dojo\Index.cshtml" />
     <Content Include="Views\Shared\_GitNinja.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
+    <Content Include="Views\Shared\Tree.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

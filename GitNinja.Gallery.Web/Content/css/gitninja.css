@@ -128,3 +128,17 @@ input.input-url {
    font-family: Courier, monospace;
    font-size: 12px;
 }
+
+/* Tree */
+.tree-entry-icon {
+    width: 24px;
+}
+.tree-entry-path {
+    width: 250px;
+}
+.tree-entry-when {
+    width: 150px;
+}
+.tree-entry-commit {
+    
+}
