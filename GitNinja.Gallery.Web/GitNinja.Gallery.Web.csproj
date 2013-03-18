@@ -161,7 +161,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\packages\LibGit2Sharp.0.9.5\NativeBinaries\amd64\git2.dll">
+    <Content Include="..\packages\LibGit2Sharp.0.9.5\NativeBinaries\x86\git2.dll">
       <Link>git2.dll</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
