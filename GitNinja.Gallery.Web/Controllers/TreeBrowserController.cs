@@ -7,34 +7,43 @@ using GitNinja.Gallery.Web.Helpers;
 using GitNinja.Gallery.Web.Models;
 using LibGit2Sharp;
 using Filter = LibGit2Sharp.Filter;
+using RepositoryExtensions = LibGit2Sharp.RepositoryExtensions;
 
 namespace GitNinja.Gallery.Web.Controllers
 {
     public class TreeBrowserController : Controller
     {
-        public ActionResult Tree(string dojo, string repo, string branch = "master", string path = null)
+        public ActionResult Tree(string dojo, string repo, string reference = "master", string path = null)
         {
             var repository = new Repo(dojo, repo);
             var gitRepo = repository.Repository;
-            var gitBranch = gitRepo.Branches[branch];
 
-            if (gitRepo == null || gitBranch == null)
+            // Reference might be to a tag, branch or commit
+            var branch = gitRepo.Branches[reference];
+            var tag = gitRepo.Tags[reference];
+            var commit = gitRepo.Lookup<Commit>(reference);
+
+            if (branch != null)
             {
-                return new EmptyResult();
+                commit = branch.Tip;
+            }
+            else if (tag != null)
+            {
+                commit = tag.Target as Commit;
             }
 
-            var tree = gitRepo.FindTreeForPath(gitBranch.Tip, path);
-
-            if (tree == null)
+            if(branch == null && tag == null && commit == null)
             {
-                return Json("error", JsonRequestBehavior.AllowGet);
+                throw new ArgumentException("Reference is neither branch, nor tag, nor commit.");
             }
+
+            var tree = gitRepo.FindTreeForPath(commit, path);
 
             var nodes = tree.Select(entry => new TreeViewElement() { Id = entry.Target.Sha, Name = entry.Name, Path = entry.Path, Type = entry.Mode.ToString() }).ToList();
 
             foreach (var node in nodes)
             {
-                Commit lastCommit = gitRepo.FindLastChangingCommit(gitRepo.Head.Tip, node.Path);
+                Commit lastCommit = gitRepo.FindLastChangingCommit(commit, node.Path);
 
                 if (lastCommit != null)
                 {
@@ -51,19 +60,29 @@ namespace GitNinja.Gallery.Web.Controllers
                 }
             }
 
-            return PartialView("Tree", new TreeViewModel() {Dojo = dojo, Repo = repo, Branch = branch, Path = path, Elements = nodes});
+            return PartialView("Tree", new TreeViewModel() {Dojo = dojo, Repo = repo, Reference = reference, Path = path, Elements = nodes});
         }
 
-        public ActionResult Blob(string dojo, string repo, string branch, string path)
+
+        public ActionResult Blob(string dojo, string repo, string branch = "master", string path = null)
         {
-            throw new NotImplementedException();
+            var repository = new Repo(dojo, repo);
+            var gitRepo = repository.Repository;
+            var gitBranch = gitRepo.Branches[branch];
+            
+            if (gitRepo == null || gitBranch == null)
+            {
+                return new EmptyResult();
+            }
+
+            return PartialView("Tree");
         }
 
         public class TreeViewModel
         {
             public string Dojo { get; set; }
             public string Repo { get; set; }
-            public string Branch { get; set; }
+            public string Reference { get; set; }
             public string Path { get; set; }
 
             public bool IsRoot

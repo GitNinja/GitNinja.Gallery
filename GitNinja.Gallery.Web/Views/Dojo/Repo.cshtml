@@ -25,7 +25,7 @@
         $(function() {
             $('#repo-tab a:first').tab('show');
 
-            $.get('@Url.RouteUrl("tree", new {dojo = Model.Dojo, repo = Model.Name, branch = "master"})', function(data) {
+            $.get('@Url.RouteUrl("tree", new {dojo = Model.Dojo, repo = Model.Name, Reference = "master"})', function(data) {
                 $('#tree-container').html(data);
                 hookupTreeEvents();
             });

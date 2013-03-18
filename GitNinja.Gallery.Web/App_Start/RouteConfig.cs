@@ -23,14 +23,14 @@ namespace GitNinja.Gallery.Web
 
             routes.MapRoute(
                 name: "tree",
-                url: "Browse/{dojo}/{repo}/tree/{branch}/{*path}",
-                defaults: new { controller = "TreeBrowser", action = "Tree", branch = UrlParameter.Optional, path = UrlParameter.Optional }
+                url: "Browse/{dojo}/{repo}/tree/{reference}/{*path}",
+                defaults: new { controller = "TreeBrowser", action = "Tree", reference = UrlParameter.Optional, path = UrlParameter.Optional }
             );
 
             routes.MapRoute(
                 name: "blob",
-                url: "Browse/{dojo}/{repo}/blob/{branch}/{*path}",
-                defaults: new { controller = "TreeBrowser", action = "Blob", branch = UrlParameter.Optional, path = UrlParameter.Optional }
+                url: "Browse/{dojo}/{repo}/blob/{reference}/{*path}",
+                defaults: new { controller = "TreeBrowser", action = "Blob", reference = UrlParameter.Optional, path = UrlParameter.Optional }
             );
 
             routes.MapRoute(

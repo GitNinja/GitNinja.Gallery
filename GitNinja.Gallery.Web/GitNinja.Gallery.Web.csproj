@@ -148,7 +148,6 @@
     <Compile Include="Controllers\DojoController.cs" />
     <Compile Include="Controllers\TreeBrowserController.cs" />
     <Compile Include="Controllers\GitController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
