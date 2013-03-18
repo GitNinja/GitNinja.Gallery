@@ -195,9 +195,6 @@
     <Content Include="git2.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="git2.pdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Global.asax" />
     <Content Include="Content\img\logo-w-title.ai" />
     <Content Include="Content\img\logo.ai" />
