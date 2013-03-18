@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Configuration;
-using System.Linq;
+using System.Web;
 using LibGit2Sharp;
 
 namespace GitNinja.Gallery.Web.Models
@@ -19,9 +18,7 @@ namespace GitNinja.Gallery.Web.Models
           Dojo = dojoName;
           Name = repoName;
           Repository = new Repository(GitNinja.GetRepositoryPath(dojoName, repoName));
-          
-
-          Url = string.Format("https://{0}/{1}/{2}", ConfigurationManager.AppSettings.Get("GitHost"), Dojo, Name);
+          Url = string.Format("https://{0}/git/{1}/{2}", HttpContext.Current.Request.Url.Host, Dojo, Name);
       }
   }
 }
