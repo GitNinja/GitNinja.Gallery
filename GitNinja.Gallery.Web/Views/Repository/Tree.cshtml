@@ -6,13 +6,21 @@
 }
 
 <div class="tab-pane active" id="tree">
-    <table class="tree table table-bordered">
+    <table class="tree table">
+        <thead>
+            <tr>
+                <th colspan="2">Name</th>
+                <th colspan="2">Last Change</th>
+            </tr>
+        </thead>
         <tbody>
             @if (!Model.IsRoot)
             {
                 <tr class="tree-entry">
-                    <td class="tree-entry-icon"></td>
+                    <td class="tree-entry-icon"><i class="icon icon-folder-open"></i></td>
                     <td class="tree-entry-path"><a data-pjax href="@Url.RouteUrl("tree", new { reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = Model.ParentPath })">...</a></td>
+                    <td></td>
+                    <td></td>
                 </tr>
             }
             @foreach (var entry in Model.Elements.OrderBy(e => e.Type))
@@ -21,12 +29,12 @@
 
                     @if (entry.IsDirectory)
                     {
-                        <td class="tree-entry-icon"><span class="tree-entry-icon-directory">D</span></td>
+                        <td class="tree-entry-icon"><i class="icon icon-folder-close"></i></td>
                         <td class="tree-entry-path"><a data-pjax href="@Url.RouteUrl("tree", new { reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = entry.Path })">@entry.Name</a></td>
                     }
                     else
                     {
-                        <td class="tree-entry-icon"><span class="tree-entry-icon-file">F</span></td>
+                        <td class="tree-entry-icon"><i class="icon icon-file"></i></td>
                         <td class="tree-entry-path"><a data-pjax href="@Url.RouteUrl("blob", new { reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = entry.Path })">@entry.Name</a></td>                    
                     }
 
