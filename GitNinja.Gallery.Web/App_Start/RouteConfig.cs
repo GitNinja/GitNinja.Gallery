@@ -12,25 +12,31 @@ namespace GitNinja.Gallery.Web
             /* Browse ****************************************************************************/
             routes.MapRoute(
               name: "GotoDojo",
-              url: "Browse/{dojo}",
+              url: "browse/{dojo}",
               defaults: new { controller = "Dojo", action = "Dojo" }
             );
             routes.MapRoute(
               name: "GotoRepo",
-              url: "Browse/{dojo}/{repo}",
-              defaults: new { controller = "Dojo", action = "Repo" }
+              url: "browse/{dojo}/{repo}",
+              defaults: new { controller = "Repository", action = "Tree" }
             );
 
             routes.MapRoute(
                 name: "tree",
-                url: "Browse/{dojo}/{repo}/tree/{reference}/{*path}",
-                defaults: new { controller = "TreeBrowser", action = "Tree", reference = UrlParameter.Optional, path = UrlParameter.Optional }
+                url: "browse/{dojo}/{repo}/tree/{reference}/{*path}",
+                defaults: new { controller = "Repository", action = "Tree", reference = UrlParameter.Optional, path = UrlParameter.Optional }
             );
 
             routes.MapRoute(
                 name: "blob",
-                url: "Browse/{dojo}/{repo}/blob/{reference}/{*path}",
-                defaults: new { controller = "TreeBrowser", action = "Blob", reference = UrlParameter.Optional, path = UrlParameter.Optional }
+                url: "browse/{dojo}/{repo}/blob/{reference}/{*path}",
+                defaults: new { controller = "Repository", action = "Blob", reference = UrlParameter.Optional, path = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
+                name: "commits",
+                url: "browse/{dojo}/{repo}/commits",
+                defaults: new { controller = "Repository", action = "Commits" }
             );
 
             routes.MapRoute(

@@ -45,6 +45,29 @@ namespace GitNinja.Gallery.Web.Helpers
             }
         }
 
+        public static Commit FindCommitForReference(this Repository gitRepo, string reference)
+        {
+            // Reference might be to a tag, branch or commit
+            var branch = gitRepo.Branches[reference];
+            var tag = gitRepo.Tags[reference];
+            var commit = gitRepo.Lookup<Commit>(reference);
+
+            if (branch != null)
+            {
+                commit = branch.Tip;
+            }
+            else if (tag != null)
+            {
+                commit = tag.Target as Commit;
+            }
+
+            if (branch == null && tag == null && commit == null)
+            {
+                throw new ArgumentException("Reference is neither branch, nor tag, nor commit.");
+            }
+            return commit;
+        }
+
         public static Tree FindTreeForPath(this Repository repo, Commit start, string path)
         {
 

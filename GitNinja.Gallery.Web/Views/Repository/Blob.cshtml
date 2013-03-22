@@ -1,0 +1,12 @@
+﻿@model GitNinja.Gallery.Web.Models.View.Blob
+@{
+    Layout = "../Shared/_Repo.cshtml";
+}
+<div class="tab-pane active" id="tree">
+    <a href="@Url.RouteUrl("tree", new {reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = Model.ParentPath})">.. back to tree</a>
+    <p>File: @Model.FileName</p>
+    <p>Extension: @Model.Extension</p>
+    <p>Size: @Model.SizeInBytes bytes</p>
+
+    <pre>@Model.Content</pre>
+</div>

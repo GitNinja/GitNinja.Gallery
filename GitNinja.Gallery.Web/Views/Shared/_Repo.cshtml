@@ -1,0 +1,47 @@
+﻿@{
+    Layout = "_GitNinja.cshtml";
+}
+
+@model global::GitNinja.Gallery.Web.Models.View.RepositoryBasedModel
+@{
+    ViewBag.Title = Model.Name;
+}
+@section topbar
+{
+    <h4>
+        @Html.ActionLink("Dashboard", "Index", "Dojo")<span class="divider"> /</span>
+        @Html.ActionLink(Model.Dojo, "Dojo",  "Dojo", new { dojo = Model.Dojo }, new {} )<span class="divider"> /</span>
+        @Html.ActionLink(Model.Name,  "Tree",  "Repository", new { dojo = Model.Dojo, repo = Model.Name }, new {})
+    </h4>
+}
+
+<div class="row">
+    <div class="span12">
+        <div class="input-prepend">
+            <button type="button" class="btn" disabled="disabled">HTTP</button>
+            <button type="button" class="btn" disabled="disabled">SSH</button>
+            @Html.TextBox("GitRepositoryUrl", Model.Url, new { @class = "input-xxlarge input-url"})
+        </div>
+
+        <ul class="nav nav-tabs" id="repo-tab">
+            <li><a href="@Url.Action("Tree", "Repository", routeValues: new {dojo = Model.Dojo, repo = Model.Name})" data-tab-id="tree">Files</a></li>
+            <li><a href="@Url.Action("Commits", "Repository", routeValues: new {dojo = Model.Dojo, repo = Model.Name})" data-tab-id="commits">Commits</a></li>
+            <li><a href="#" data-tab-id="pullrequests">Pull Requests</a></li>
+            <li><a href="#" data-tab-id="settings">Settings</a></li>
+        </ul>    
+        <div class="tab-content">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+
+@section bottom {
+    <script type="text/javascript">
+        $(function () {
+            var markTabAsActive = function() {
+                var id = $("div.tab-pane.active").attr('id');
+                $("ul.nav.nav-tabs > li > a[data-tab-id='" + id + "']").parent().addClass("active");
+            }();
+        });
+    </script>    
+}

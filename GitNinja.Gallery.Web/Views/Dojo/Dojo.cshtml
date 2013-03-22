@@ -21,12 +21,12 @@
                 {
                     foreach (var item in Model)
                     {
-                    <li>@Html.ActionLink(item.Name, "Repo", new { dojo = item.Dojo, repo = item.Name })</li>
+                    <li>@Html.ActionLink(item.Name, "Tree", "Repository", new { dojo = item.Dojo, repo = item.Name }, new {})</li>
                     }
                 }
                 <li class="divider"></li>
             </ul>
-            @using (Html.BeginForm("Create", "Dojo", FormMethod.Get))
+            @using (Html.BeginForm("Create", "Repository", FormMethod.Post))
             {
                 <ul class="nav nav-list">
                     <li class="nav-header">Add new repository</li>

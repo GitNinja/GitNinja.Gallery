@@ -1,39 +1,43 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Dynamic;
+using System.IO;
+using System.Web.Mvc;
 using GitNinja.Gallery.Web.Models;
 
 namespace GitNinja.Gallery.Web.Controllers
 {
     public class DojoController : Controller
     {
-      public ActionResult Index()
-      {
-        //list all dojos
-        return View(GitNinja.Instance.GetDojoList());
-      }
-
-      public ActionResult Dojo(string dojo)
-      {
-        if (!GitNinja.Instance.DojoExists(dojo))
-          return new HttpNotFoundResult();
-        return View(new Dojo(dojo));
-      }
-
-      public ActionResult Repo(string dojo, string repo)
-      {
-        if (!GitNinja.Instance.RepoExists(dojo, repo))
-          return new HttpNotFoundResult();
-        return View(new Repo(dojo, repo));
-      }
-
-      public ActionResult Create(string dojo, string repo)
-      {
-        GitNinja.Instance.CreateDojo(dojo);
-        if (!string.IsNullOrWhiteSpace(repo))
+        public ActionResult Index()
         {
-          GitNinja.Instance.CreateRepo(dojo, repo);
-          return RedirectToAction("Repo", new { dojo, repo });
+            //list all dojos
+            return View(GitNinja.Instance.GetDojoList());
         }
-        return RedirectToAction("Dojo", new { dojo });
-      }
+
+        public ActionResult Dojo(string dojo)
+        {
+            if (!GitNinja.Instance.DojoExists(dojo))
+                return new HttpNotFoundResult();
+            return View(new Dojo(dojo));
+        }
+
+
+        [HttpPost]
+        //TODO: "Exists-check" is transactionally not safe, revisit
+        public ActionResult Create(string dojo)
+        {
+            if (string.IsNullOrWhiteSpace(dojo)
+                || GitNinja.Instance.DojoExists(dojo))
+            {
+                dynamic failureModel = new ExpandoObject();
+                failureModel.Dojo = dojo;
+                return View("DojoCreationFailed", failureModel);
+            }
+
+            
+            GitNinja.Instance.CreateDojo(dojo);
+            
+            return RedirectToAction("Dojo", new {dojo});
+        }
     }
 }

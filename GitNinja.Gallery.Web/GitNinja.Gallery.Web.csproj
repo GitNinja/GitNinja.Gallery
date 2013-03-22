@@ -64,6 +64,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -145,9 +146,12 @@
     <Compile Include="App_Start\GitNinja.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Models\View\Blob.cs" />
+    <Compile Include="Models\View\Commit.cs" />
     <Compile Include="Controllers\DojoController.cs" />
-    <Compile Include="Controllers\TreeBrowserController.cs" />
+    <Compile Include="Controllers\RepositoryController.cs" />
     <Compile Include="Controllers\GitController.cs" />
+    <Compile Include="Models\View\TreeEntry.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -157,6 +161,9 @@
     <Compile Include="Models\Dojo.cs" />
     <Compile Include="Models\Repo.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\View\CommitList.cs" />
+    <Compile Include="Models\View\RepositoryBasedModel.cs" />
+    <Compile Include="Models\View\Tree.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -233,11 +240,18 @@
     </Content>
     <Content Include="packages.config" />
     <Content Include="Views\Dojo\Dojo.cshtml" />
-    <Content Include="Views\Dojo\Repo.cshtml" />
+    <Content Include="Views\Shared\OLD_Repo.cshtml" />
     <Content Include="Views\Dojo\Index.cshtml" />
     <Content Include="Views\Shared\_GitNinja.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Shared\Tree.cshtml" />
+    <Content Include="Views\Repository\Tree.cshtml" />
+    <Content Include="Views\Repository\Commits.cshtml" />
+    <Content Include="Views\Shared\_Repo.cshtml" />
+    <Content Include="Views\Dojo\DojoCreationFailed.cshtml" />
+    <Content Include="Views\Repository\CreationFailed.cshtml" />
+    <Content Include="Views\Repository\Blob.cshtml" />
+    <Content Include="Views\Repository\Commit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
