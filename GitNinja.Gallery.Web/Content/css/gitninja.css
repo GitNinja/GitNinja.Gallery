@@ -130,16 +130,17 @@ input.input-url {
 }
 
 /* Tree */
-.tree-entry-icon {
-    width: 24px;
+.table td.tree-entry-icon {
+    width: 16px;
+    padding-right: 0;
 }
-.tree-entry-path {
+.table td.tree-entry-path {
     width: 250px;
 }
-.tree-entry-when {
+.table td.tree-entry-when {
     width: 150px;
 }
-.tree-entry-commit {
+.table td.tree-entry-commit {
     
 }
 

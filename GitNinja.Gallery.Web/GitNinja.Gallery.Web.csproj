@@ -151,6 +151,7 @@
     <Compile Include="Controllers\DojoController.cs" />
     <Compile Include="Controllers\RepositoryController.cs" />
     <Compile Include="Controllers\GitController.cs" />
+    <Compile Include="Models\View\PathSegment.cs" />
     <Compile Include="Models\View\TreeEntry.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

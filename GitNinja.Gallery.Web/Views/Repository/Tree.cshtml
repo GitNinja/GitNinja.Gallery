@@ -1,4 +1,5 @@
 ﻿@using GitNinja.Gallery.Web.Helpers
+@using GitNinja.Gallery.Web.Models.View
 @model GitNinja.Gallery.Web.Models.View.Tree
 @{
     bool isPjax = Request.Headers["X-PJAX"] != null;
@@ -6,50 +7,83 @@
 }
 
 <div class="tab-pane active" id="tree">
-    <table class="tree table">
-        <thead>
-            <tr>
-                <th colspan="2">Name</th>
-                <th colspan="2">Last Change</th>
-            </tr>
-        </thead>
-        <tbody>
-            @if (!Model.IsRoot)
-            {
-                <tr class="tree-entry">
-                    <td class="tree-entry-icon"><i class="icon icon-folder-open"></i></td>
-                    <td class="tree-entry-path"><a data-pjax href="@Url.RouteUrl("tree", new { reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = Model.ParentPath })">...</a></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-            }
-            @foreach (var entry in Model.Elements.OrderBy(e => e.Type))
-            {
-                <tr class="tree-entry">
 
-                    @if (entry.IsDirectory)
+    <div>
+        <ul class="breadcrumb">
+            <li>
+                <h4>
+                    <a data-pjax href="@Url.Action("Tree", new { dojo = Model.Dojo, repo = Model.Name })">@Model.Name</a> 
+                    @if(!string.IsNullOrEmpty(Model.Path))
                     {
-                        <td class="tree-entry-icon"><i class="icon icon-folder-close"></i></td>
-                        <td class="tree-entry-path"><a data-pjax href="@Url.RouteUrl("tree", new { reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = entry.Path })">@entry.Name</a></td>
+                        <span class="divider">/</span>
                     }
-                    else
-                    {
-                        <td class="tree-entry-icon"><i class="icon icon-file"></i></td>
-                        <td class="tree-entry-path"><a data-pjax href="@Url.RouteUrl("blob", new { reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = entry.Path })">@entry.Name</a></td>                    
-                    }
+                </h4>
+            </li>
 
-                    @if (entry.LastCommit != null)
+            @foreach (var part in PathSegment.FromPath(Model.Path))
+            {
+                <li>
+                    <a data-pjax href="@Url.RouteUrl("tree", routeValues: new { dojo = Model.Dojo, repo = Model.Name, reference = Model.Reference, path = part.Path })">@part.Name</a> 
+                    @if (!part.IsLast)
                     {
-                        <td class="tree-entry-when">@TimeHelper.RelativeTimeLabel(entry.LastCommit.AuthoredWhen)</td>
-                        <td class="tree-entry-commit">@entry.LastCommit.Message [by <a href="#">@entry.LastCommit.Author</a>]</td>
+                        <span class="divider">/</span>
                     }
-                    else
-                    {
-                        <td class="tree-entry-when"></td>
-                        <td class="tree-entry-commit"></td>
-                    }
-                </tr>
+                </li>    
             }
-        </tbody>
-    </table>
+        </ul>
+    </div>
+
+    @if (!Model.Elements.Any())
+    {
+        <span>No files or folders found. Commit and push something using the URL above!</span>
+    }
+    else
+    {
+        <table class="tree table">
+            <thead>
+                <tr>
+                    <th colspan="2">Name</th>
+                    <th colspan="2">Last Change</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (!Model.IsRoot)
+                {
+                    <tr class="tree-entry">
+                        <td class="tree-entry-icon"><i class="icon icon-folder-open"></i></td>
+                        <td class="tree-entry-path"><a data-pjax href="@Url.RouteUrl("tree", new { reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = Model.ParentPath })">...</a></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                }
+                @foreach (var entry in Model.Elements.OrderBy(e => e.Type))
+                {
+                    <tr class="tree-entry">
+
+                        @if (entry.IsDirectory)
+                        {
+                            <td class="tree-entry-icon"><i class="icon icon-folder-close"></i></td>
+                            <td class="tree-entry-path"><a data-pjax href="@Url.RouteUrl("tree", new { reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = entry.Path })">@entry.Name</a></td>
+                        }
+                        else
+                        {
+                            <td class="tree-entry-icon"><i class="icon icon-file"></i></td>
+                            <td class="tree-entry-path"><a data-pjax href="@Url.RouteUrl("blob", new { reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = entry.Path })">@entry.Name</a></td>
+                        }
+
+                        @if (entry.LastCommit != null)
+                        {
+                            <td class="tree-entry-when">@TimeHelper.RelativeTimeLabel(entry.LastCommit.AuthoredWhen)</td>
+                            <td class="tree-entry-commit">@entry.LastCommit.Message [by <a href="#">@entry.LastCommit.Author</a>]</td>
+                        }
+                        else
+                        {
+                            <td class="tree-entry-when"></td>
+                            <td class="tree-entry-commit"></td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
 </div>
