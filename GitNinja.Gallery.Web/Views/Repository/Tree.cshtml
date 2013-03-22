@@ -1,7 +1,8 @@
 ﻿@using GitNinja.Gallery.Web.Helpers
 @model GitNinja.Gallery.Web.Models.View.Tree
 @{
-    Layout = "../Shared/_Repo.cshtml";
+    bool isPjax = Request.Headers["X-PJAX"] != null;
+    Layout = isPjax ? null : "../Shared/_Repo.cshtml";
 }
 
 <div class="tab-pane active" id="tree">
@@ -11,7 +12,7 @@
             {
                 <tr class="tree-entry">
                     <td class="tree-entry-icon"></td>
-                    <td class="tree-entry-path"><a href="@Url.RouteUrl("tree", new {reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = Model.ParentPath})">...</a></td>
+                    <td class="tree-entry-path"><a data-pjax href="@Url.RouteUrl("tree", new { reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = Model.ParentPath })">...</a></td>
                 </tr>
             }
             @foreach (var entry in Model.Elements.OrderBy(e => e.Type))
@@ -21,12 +22,12 @@
                     @if (entry.IsDirectory)
                     {
                         <td class="tree-entry-icon"><span class="tree-entry-icon-directory">D</span></td>
-                        <td class="tree-entry-path"><a href="@Url.RouteUrl("tree", new {reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = entry.Path})">@entry.Name</a></td>
+                        <td class="tree-entry-path"><a data-pjax href="@Url.RouteUrl("tree", new { reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = entry.Path })">@entry.Name</a></td>
                     }
                     else
                     {
                         <td class="tree-entry-icon"><span class="tree-entry-icon-file">F</span></td>
-                        <td class="tree-entry-path"><a href="@Url.RouteUrl("blob", new {reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = entry.Path})">@entry.Name</a></td>                    
+                        <td class="tree-entry-path"><a data-pjax href="@Url.RouteUrl("blob", new { reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = entry.Path })">@entry.Name</a></td>                    
                     }
 
                     @if (entry.LastCommit != null)

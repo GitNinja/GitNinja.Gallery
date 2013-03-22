@@ -213,6 +213,7 @@
     <Content Include="Scripts\gitninja.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery.pjax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
@@ -240,7 +241,6 @@
     </Content>
     <Content Include="packages.config" />
     <Content Include="Views\Dojo\Dojo.cshtml" />
-    <Content Include="Views\Shared\OLD_Repo.cshtml" />
     <Content Include="Views\Dojo\Index.cshtml" />
     <Content Include="Views\Shared\_GitNinja.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
@@ -248,7 +248,7 @@
     <Content Include="Views\Repository\Tree.cshtml" />
     <Content Include="Views\Repository\Commits.cshtml" />
     <Content Include="Views\Shared\_Repo.cshtml" />
-    <Content Include="Views\Dojo\DojoCreationFailed.cshtml" />
+    <Content Include="Views\Dojo\CreationFailed.cshtml" />
     <Content Include="Views\Repository\CreationFailed.cshtml" />
     <Content Include="Views\Repository\Blob.cshtml" />
     <Content Include="Views\Repository\Commit.cshtml" />

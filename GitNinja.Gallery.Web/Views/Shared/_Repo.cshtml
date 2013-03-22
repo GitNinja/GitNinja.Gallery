@@ -30,7 +30,9 @@
             <li><a href="#" data-tab-id="settings">Settings</a></li>
         </ul>    
         <div class="tab-content">
-            @RenderBody()
+            <div id="pjax-container">
+                @RenderBody()
+            </div>
         </div>
     </div>
 </div>

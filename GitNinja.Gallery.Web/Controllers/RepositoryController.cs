@@ -27,7 +27,7 @@ namespace GitNinja.Gallery.Web.Controllers
                 dynamic failureModel = new ExpandoObject();
                 failureModel.Dojo = dojo;
                 failureModel.Repo = repo;
-                return View("RepoCreationFailed", failureModel);
+                return View("CreationFailed", failureModel);
             };
 
             //TODO: Transactionally not safe, revisit

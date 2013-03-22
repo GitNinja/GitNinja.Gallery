@@ -31,7 +31,7 @@ namespace GitNinja.Gallery.Web.Controllers
             {
                 dynamic failureModel = new ExpandoObject();
                 failureModel.Dojo = dojo;
-                return View("DojoCreationFailed", failureModel);
+                return View("CreationFailed", failureModel);
             }
 
             
