@@ -28,7 +28,7 @@
                 {
                     <tr class="tree-entry">
                         <td class="tree-entry-icon"><i class="icon icon-folder-open"></i></td>
-                        <td class="tree-entry-path"><a data-pjax href="@Url.RouteUrl("tree", new { reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = Model.ParentPath })">...</a></td>
+                        <td class="tree-entry-path"><a data-pjax href="@Server.UrlDecode(Url.RouteUrl("tree", new { reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = Model.ParentPath }))">...</a></td>
                         <td></td>
                         <td></td>
                     </tr>
@@ -36,16 +36,16 @@
                 @foreach (var entry in Model.Elements.OrderBy(e => e.Type))
                 {
                     <tr class="tree-entry">
-
+                        
                         @if (entry.IsDirectory)
                         {
                             <td class="tree-entry-icon"><i class="icon icon-folder-close"></i></td>
-                            <td class="tree-entry-path"><a data-pjax href="@Url.RouteUrl("tree", new { reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = entry.Path })">@entry.Name</a></td>
+                            <td class="tree-entry-path"><a data-pjax href="@Server.UrlDecode(Url.RouteUrl("tree", new { reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = entry.Path }))">@entry.Name</a></td>
                         }
                         else
                         {
                             <td class="tree-entry-icon"><i class="icon icon-file"></i></td>
-                            <td class="tree-entry-path"><a data-pjax href="@Url.RouteUrl("blob", new { reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = entry.Path })">@entry.Name</a></td>
+                            <td class="tree-entry-path"><a data-pjax href="@Server.UrlDecode(Url.RouteUrl("blob", new { reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = entry.Path }))">@entry.Name</a></td>
                         }
 
                         @if (entry.LastCommit != null)

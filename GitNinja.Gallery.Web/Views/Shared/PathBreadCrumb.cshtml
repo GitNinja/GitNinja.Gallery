@@ -21,7 +21,7 @@
                 }
                 else
                 {
-                    <a data-pjax href="@Url.RouteUrl("tree", routeValues: new { dojo = Model.Dojo, repo = Model.Name, reference = Model.Reference, path = part.Path })">@part.Name</a> 
+                    <a data-pjax href="@Server.UrlDecode(Url.RouteUrl("tree", routeValues: new { dojo = Model.Dojo, repo = Model.Name, reference = Model.Reference, path = part.Path }))">@part.Name</a> 
                     <span class="divider">/</span>
                 }
             </li>    
