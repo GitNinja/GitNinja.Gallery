@@ -8,7 +8,6 @@
 <div class="tab-pane active" id="tree">
     @Html.Partial("PathBreadCrumb", Model)
 
-    <a data-pjax href="@Url.RouteUrl("tree", new {reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = Model.ParentPath})">.. back to tree</a>
     <p>File: @Model.FileName</p>
     <p>Extension: @Model.Extension</p>
     <p>Size: @Model.SizeInBytes bytes</p>
