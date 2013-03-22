@@ -253,6 +253,7 @@
     <Content Include="Views\Repository\CreationFailed.cshtml" />
     <Content Include="Views\Repository\Blob.cshtml" />
     <Content Include="Views\Repository\Commit.cshtml" />
+    <Content Include="Views\Shared\PathBreadCrumb.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

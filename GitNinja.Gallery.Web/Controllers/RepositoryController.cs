@@ -100,12 +100,15 @@ namespace GitNinja.Gallery.Web.Controllers
 
                     node.LastCommit = new Commit()
                     {
-                        Id = lastCommit.Id.Sha,
-                        Author = lastCommit.Author.Name,
+                        Id = lastCommit.Sha,
                         Message = lastCommit.Message,
+                        MessageShort = lastCommit.MessageShort,
+                        Author = lastCommit.Author.Name,
+                        AuthorMail = lastCommit.Author.Email,
                         AuthoredWhen = lastCommit.Author.When,
-                        CommittedWhen = lastCommit.Committer.When,
-                        Committer = lastCommit.Committer.Name
+                        Committer = lastCommit.Committer.Name,
+                        CommitterMail = lastCommit.Committer.Email,
+                        CommittedWhen = lastCommit.Committer.When
                     };
                 }
             }

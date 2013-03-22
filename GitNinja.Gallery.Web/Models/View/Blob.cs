@@ -1,12 +1,11 @@
 ﻿namespace GitNinja.Gallery.Web.Models.View
 {
-    public class Blob : RepositoryBasedModel
+    public class Blob : TreeBase
     {
         public Blob(Repo repo) : base(repo)
         {
         }
 
-        public string Path { get; set; }
         public string FileName
         {
             get
@@ -34,21 +33,5 @@
         }
         public long SizeInBytes { get; set; }
         public string Content { get; set; }
-
-        public string ParentPath
-        {
-            get
-            {
-                var lastSlash = Path.LastIndexOf("/", System.StringComparison.Ordinal);
-
-                if (lastSlash < 0)
-                {
-                    return "";
-                }
-                return Path.Substring(0, lastSlash);
-            }
-        }
-
-        public string Reference { get; set; }
     }
 }

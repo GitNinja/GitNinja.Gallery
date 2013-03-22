@@ -2,21 +2,14 @@
 
 namespace GitNinja.Gallery.Web.Models.View
 {
-    public class Tree : RepositoryBasedModel
+    public abstract class TreeBase : RepositoryBasedModel
     {
-        public Tree(Repo repo) : base(repo)
+        protected TreeBase(Repo repo) : base(repo)
         {
         }
 
         public string Reference { get; set; }
         public string Path { get; set; }
-
-        public bool IsRoot
-        {
-            get { return string.IsNullOrEmpty(Path); }
-        }
-
-        public IEnumerable<TreeEntry> Elements { get; set; }
 
         public string ParentPath
         {
@@ -31,5 +24,20 @@ namespace GitNinja.Gallery.Web.Models.View
                 return Path.Substring(0, lastSlash);
             }
         }
+    }
+
+    public class Tree : TreeBase
+    {
+        public Tree(Repo repo) : base(repo)
+        {
+        }
+        
+        public bool IsRoot
+        {
+            get { return string.IsNullOrEmpty(Path); }
+        }
+
+        public IEnumerable<TreeEntry> Elements { get; set; }
+
     }
 }

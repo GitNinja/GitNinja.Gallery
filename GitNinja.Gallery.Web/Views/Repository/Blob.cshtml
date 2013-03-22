@@ -4,7 +4,10 @@
     bool isPjax = Request.Headers["X-PJAX"] != null;
     Layout = isPjax ? null : "../Shared/_Repo.cshtml";
 }
+
 <div class="tab-pane active" id="tree">
+    @Html.Partial("PathBreadCrumb", Model)
+
     <a data-pjax href="@Url.RouteUrl("tree", new {reference = Model.Reference, dojo = Model.Dojo, repo = Model.Name, path = Model.ParentPath})">.. back to tree</a>
     <p>File: @Model.FileName</p>
     <p>Extension: @Model.Extension</p>

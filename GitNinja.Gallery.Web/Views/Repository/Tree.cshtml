@@ -8,30 +8,7 @@
 
 <div class="tab-pane active" id="tree">
 
-    <div>
-        <ul class="breadcrumb">
-            <li>
-                <h4>
-                    <a data-pjax href="@Url.Action("Tree", new { dojo = Model.Dojo, repo = Model.Name })">@Model.Name</a> 
-                    @if(!string.IsNullOrEmpty(Model.Path))
-                    {
-                        <span class="divider">/</span>
-                    }
-                </h4>
-            </li>
-
-            @foreach (var part in PathSegment.FromPath(Model.Path))
-            {
-                <li>
-                    <a data-pjax href="@Url.RouteUrl("tree", routeValues: new { dojo = Model.Dojo, repo = Model.Name, reference = Model.Reference, path = part.Path })">@part.Name</a> 
-                    @if (!part.IsLast)
-                    {
-                        <span class="divider">/</span>
-                    }
-                </li>    
-            }
-        </ul>
-    </div>
+    @Html.Partial("PathBreadCrumb", Model)
 
     @if (!Model.Elements.Any())
     {
@@ -74,7 +51,7 @@
                         @if (entry.LastCommit != null)
                         {
                             <td class="tree-entry-when">@TimeHelper.RelativeTimeLabel(entry.LastCommit.AuthoredWhen)</td>
-                            <td class="tree-entry-commit">@entry.LastCommit.Message [by <a href="#">@entry.LastCommit.Author</a>]</td>
+                            <td class="tree-entry-commit">@entry.LastCommit.MessageShort [by <a href="#">@entry.LastCommit.Author</a>]</td>
                         }
                         else
                         {
