@@ -1,0 +1,31 @@
+﻿@using GitNinja.Gallery.Models.View
+
+@model TreeBaseViewModel
+<div>
+    <ul class="breadcrumb">
+        <li>
+            <h4>
+                <a data-pjax href="@Url.Action("Tree","Repository", new { dojo = Model.Dojo, repo = Model.Name })">@Model.Name</a> 
+                @if(!string.IsNullOrEmpty(Model.Path))
+                {
+                    <span class="divider">/</span>
+                }
+            </h4>
+        </li>
+
+        @foreach (var part in PathSegmentViewModel.FromPath(Model.Path))
+        {
+            <li>
+                @if (part.IsLast)
+                {
+                    <span><strong>@part.Name</strong></span>
+                }
+                else
+                {
+                    <a data-pjax href="@Server.UrlDecode(Url.RouteUrl("tree", routeValues: new { dojo = Model.Dojo, repo = Model.Name, reference = Model.Reference, path = part.Path }))">@part.Name</a> 
+                    <span class="divider">/</span>
+                }
+            </li>    
+        }
+    </ul>
+</div>

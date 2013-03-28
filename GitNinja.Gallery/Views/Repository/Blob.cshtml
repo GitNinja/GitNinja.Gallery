@@ -1,0 +1,16 @@
+﻿@model GitNinja.Gallery.Models.View.BlobViewModel
+@{
+    Layout = "../Shared/_Repo.cshtml";
+    bool isPjax = Request.Headers["X-PJAX"] != null;
+    Layout = isPjax ? null : "../Shared/_Repo.cshtml";
+}
+
+<div class="tab-pane active" id="tree">
+    @Html.Partial("PathBreadCrumb", Model)
+
+    <p>File: @Model.FileName</p>
+    <p>Extension: @Model.Extension</p>
+    <p>Size: @Model.SizeInBytes bytes</p>
+
+    <pre>@Model.Content</pre>
+</div>
