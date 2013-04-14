@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using LibGit2Sharp;
 
@@ -7,40 +8,47 @@ namespace GitNinja.Core.Extensions
     public static class RepositoryExtensions
     {
 
-        /// TODO: This method is very simple as of now. It is not performing well, and cannot detect renames/deletes/merges
+        /// TODO: This method is very simple as of now. It is not performing well, and cannot detect renames/deletes
         public static Commit FindLastChangingCommit(this Repository repo, Commit start, string path)
         {
             if (start == null)
             {
                 start = repo.Head.Tip;
+                if(start == null)
+                    return null;
             }
 
             var tree = start.Tree;
             var fileInTree = tree[path];
-
-            Commit lastCommit = null;
-
-            if (start.ParentsCount == 1)
+            if (fileInTree == null)
             {
-                var parent = start.Parents.First();
-                var fileInParentTree = parent.Tree[path];
-
-                if (fileInParentTree == null)
-                {
-                    return start;
-                }
-
-                if (fileInTree.Target.Sha == fileInParentTree.Target.Sha)
-                {
-                    return FindLastChangingCommit(repo, parent, path);
-                }
-
-                return start;
+                return null;
             }
-            else
+
+            if (start.ParentsCount >= 1)
             {
-                return lastCommit;
+                var commits = new List<Commit>(){ start };
+                foreach (var parent in start.Parents)
+                {
+                    var fileInParentTree = parent.Tree[path];
+
+                    if (fileInParentTree == null)
+                        continue;
+
+                    if (fileInTree.Target.Sha == fileInParentTree.Target.Sha)
+                    {
+                        var commitPerParent = FindLastChangingCommit(repo, parent, path);
+                        if (commitPerParent != null)
+                        {
+                            commits.Add(commitPerParent);
+                        }
+                    }
+                }
+                
+                return commits.OrderBy(c => c.Committer.When)
+                              .FirstOrDefault();
             }
+            return null;
         }
 
         public static Commit FindCommitForReference(this Repository gitRepo, string reference)

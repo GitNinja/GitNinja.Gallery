@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{33C149B1-3EE6-4054-BF75-EBFCE233CDCE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GitNinja.Core.Tests</RootNamespace>
+    <AssemblyName>GitNinja.Core.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="LibGit2Sharp, Version=0.10.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\LibGit2Sharp.0.10\lib\net35\LibGit2Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="TechTalk.SpecFlow">
+      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Extensions\RepositoryExtensionsTests.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestHelpers\BaseTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Resources\Bare\config" />
+    <None Include="Resources\Bare\description" />
+    <None Include="Resources\Bare\HEAD" />
+    <None Include="Resources\Bare\hooks\applypatch-msg.sample" />
+    <None Include="Resources\Bare\hooks\commit-msg.sample" />
+    <None Include="Resources\Bare\hooks\post-commit.sample" />
+    <None Include="Resources\Bare\hooks\post-receive.sample" />
+    <None Include="Resources\Bare\hooks\post-update.sample" />
+    <None Include="Resources\Bare\hooks\pre-applypatch.sample" />
+    <None Include="Resources\Bare\hooks\pre-commit.sample" />
+    <None Include="Resources\Bare\hooks\pre-rebase.sample" />
+    <None Include="Resources\Bare\hooks\prepare-commit-msg.sample" />
+    <None Include="Resources\Bare\hooks\update.sample" />
+    <None Include="Resources\Bare\info\exclude" />
+    <None Include="Resources\SimpleNoMerges\.git\COMMIT_EDITMSG" />
+    <None Include="Resources\SimpleNoMerges\.git\config" />
+    <None Include="Resources\SimpleNoMerges\.git\description" />
+    <None Include="Resources\SimpleNoMerges\.git\HEAD" />
+    <None Include="Resources\SimpleNoMerges\.git\hooks\applypatch-msg.sample" />
+    <None Include="Resources\SimpleNoMerges\.git\hooks\commit-msg.sample" />
+    <None Include="Resources\SimpleNoMerges\.git\hooks\post-commit.sample" />
+    <None Include="Resources\SimpleNoMerges\.git\hooks\post-receive.sample" />
+    <None Include="Resources\SimpleNoMerges\.git\hooks\post-update.sample" />
+    <None Include="Resources\SimpleNoMerges\.git\hooks\pre-applypatch.sample" />
+    <None Include="Resources\SimpleNoMerges\.git\hooks\pre-commit.sample" />
+    <None Include="Resources\SimpleNoMerges\.git\hooks\pre-rebase.sample" />
+    <None Include="Resources\SimpleNoMerges\.git\hooks\prepare-commit-msg.sample" />
+    <None Include="Resources\SimpleNoMerges\.git\hooks\update.sample" />
+    <None Include="Resources\SimpleNoMerges\.git\index" />
+    <None Include="Resources\SimpleNoMerges\.git\info\exclude" />
+    <None Include="Resources\SimpleNoMerges\.git\logs\HEAD" />
+    <None Include="Resources\SimpleNoMerges\.git\logs\refs\heads\master" />
+    <None Include="Resources\SimpleNoMerges\.git\objects\06\1b35ca18c50a38e368bfaf6ece0fef475ab0c8" />
+    <None Include="Resources\SimpleNoMerges\.git\objects\18\b8800d2b0950cf32fc238582efe8527337d22c" />
+    <None Include="Resources\SimpleNoMerges\.git\objects\22\5b729865a3d2c70db5ffecdb53e95eb870b3fe" />
+    <None Include="Resources\SimpleNoMerges\.git\objects\39\266f5e211f9eba8a282e69e24cd103ad28ad88" />
+    <None Include="Resources\SimpleNoMerges\.git\objects\59\fa440f92e4f8f812fb22c227ac484a517029cd" />
+    <None Include="Resources\SimpleNoMerges\.git\objects\5a\4f4dd40300cc1e3369fca339f8a091c837cd3e" />
+    <None Include="Resources\SimpleNoMerges\.git\objects\5b\ce13d696b40ae0a42641e2b1330e1eb46f2842" />
+    <None Include="Resources\SimpleNoMerges\.git\objects\68\64e23be69aed32ca28742dec6fcc1bed9fc8e0" />
+    <None Include="Resources\SimpleNoMerges\.git\objects\76\ccc53b3dc3ae957386481dedd05a394aeff0aa" />
+    <None Include="Resources\SimpleNoMerges\.git\objects\7a\ee04f938c02fa85c860848d94297e96dc99da1" />
+    <None Include="Resources\SimpleNoMerges\.git\objects\81\557e69c95557b43586aecafced89a863bc3ca8" />
+    <None Include="Resources\SimpleNoMerges\.git\objects\82\93a4c3e110b7481d81c96467c632ed63f9523a" />
+    <None Include="Resources\SimpleNoMerges\.git\objects\a2\4164af3dc31ceb9d84283d0c42dac3fcd639e5" />
+    <None Include="Resources\SimpleNoMerges\.git\objects\a4\4dc305fcc1f2f5f51f6ce57ff42c781f033690" />
+    <None Include="Resources\SimpleNoMerges\.git\objects\ab\d3ff0a62b5d21130f5013621e0d80ffb3430e0" />
+    <None Include="Resources\SimpleNoMerges\.git\objects\c5\b6cd41e4f9ce05a8df5d0a898a4649436526bd" />
+    <None Include="Resources\SimpleNoMerges\.git\objects\d4\485c3d5eb0a9f63427fd23a5ee1665d763c721" />
+    <None Include="Resources\SimpleNoMerges\.git\objects\fa\e4c71b21aa73fb9320d5d95eab57bc2f2a1511" />
+    <None Include="Resources\SimpleNoMerges\.git\refs\heads\master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\Bare\objects\info\" />
+    <Folder Include="Resources\Bare\objects\pack\" />
+    <Folder Include="Resources\Bare\refs\heads\" />
+    <Folder Include="Resources\Bare\refs\tags\" />
+    <Folder Include="Resources\SimpleNoMerges\.git\objects\info\" />
+    <Folder Include="Resources\SimpleNoMerges\.git\objects\pack\" />
+    <Folder Include="Resources\SimpleNoMerges\.git\refs\tags\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GitNinja.Core\GitNinja.Core.csproj">
+      <Project>{EAFF1A10-0DA9-444D-BF8A-7963009EDC32}</Project>
+      <Name>GitNinja.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="git2.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\SimpleNoMerges\first-level-directory\first-file.txt" />
+    <Content Include="Resources\SimpleNoMerges\first-level-directory\second-level-directory\third-file.txt" />
+    <Content Include="Resources\SimpleNoMerges\first-level-directory\second-renamed-file.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+if not exist "$(TargetDir)NativeBinaries" md "$(TargetDir)NativeBinaries"
+if not exist "$(TargetDir)NativeBinaries\x86" md "$(TargetDir)NativeBinaries\x86"
+xcopy /s /y "$(SolutionDir)packages\LibGit2Sharp.0.10\NativeBinaries\x86\*.*" "$(TargetDir)NativeBinaries\x86"
+if not exist "$(TargetDir)NativeBinaries\amd64" md "$(TargetDir)NativeBinaries\amd64"
+xcopy /s /y "$(SolutionDir)packages\LibGit2Sharp.0.10\NativeBinaries\amd64\*.*" "$(TargetDir)NativeBinaries\amd64"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

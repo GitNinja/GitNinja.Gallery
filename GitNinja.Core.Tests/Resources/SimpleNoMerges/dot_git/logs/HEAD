@@ -1,0 +1,5 @@
+0000000000000000000000000000000000000000 c5b6cd41e4f9ce05a8df5d0a898a4649436526bd tjdecke <tom.joedecke@googlemail.com> 1365952441 +0100	commit (initial): added first-level-directory and first-file.txt
+c5b6cd41e4f9ce05a8df5d0a898a4649436526bd abd3ff0a62b5d21130f5013621e0d80ffb3430e0 tjdecke <tom.joedecke@googlemail.com> 1365952473 +0100	commit: added second-file.txt
+abd3ff0a62b5d21130f5013621e0d80ffb3430e0 59fa440f92e4f8f812fb22c227ac484a517029cd tjdecke <tom.joedecke@googlemail.com> 1365952496 +0100	commit: changed first-file.txt
+59fa440f92e4f8f812fb22c227ac484a517029cd 061b35ca18c50a38e368bfaf6ece0fef475ab0c8 tjdecke <tom.joedecke@googlemail.com> 1365952538 +0100	commit: added second-level-directory and third-file.txt
+061b35ca18c50a38e368bfaf6ece0fef475ab0c8 225b729865a3d2c70db5ffecdb53e95eb870b3fe tjdecke <tom.joedecke@googlemail.com> 1365952613 +0100	commit: renamed second-file.txt to second-renamed-file.txt
